@@ -5,6 +5,19 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Livewire\Counter;
+
+//ruang
+use App\Livewire\Ruang\ListRuang;
+use App\Livewire\Ruang\CreateRuang;
+use App\Livewire\Ruang\EditRuang;
+
+//pegawai
+use App\Livewire\Pegawai\ListPegawai;
+use App\Livewire\Pegawai\CreatePegawai;
+use App\Livewire\Pegawai\EditPegawai;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -22,3 +35,15 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/counter', Counter::class);
+
+//ruang
+Route::get('/ruang', ListRuang::class)->name('ruang.index');
+Route::get('/ruang/create', CreateRuang::class)->name('ruang.create');
+Route::get('/ruang/edit/{ruang}', EditRuang::class)->name('ruang.edit');
+
+//ruang
+Route::get('/Pegawai', ListPegawai::class)->name('pegawai.index');
+Route::get('/Pegawai/create', CreatePegawai::class)->name('pegawai.create');
+Route::get('/Pegawai/edit/{pegawai}', EditPegawai::class)->name('pegawai.edit');
